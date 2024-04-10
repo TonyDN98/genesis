@@ -90,3 +90,21 @@ FROM admissions
 WHERE patient_id = 579;
 
 
+-- Based on the cities that our patients live in, show unique cities that are in province_id 'NS'?
+
+SELECT DISTINCT(city) AS unique_cities
+FROM patients
+WHERE province_id = 'NS';
+
+SELECT city
+FROM patients
+GROUP BY city
+HAVING province_id = 'NS';
+
+-- Write a query to find list of patients first_name, last_name, 
+-- and allergies where allergies are not null and are from the city of 'Hamilton'
+SELECT first_name,last_name, allergies FROM patients
+WHERE	allergies is not NULL AND LOWER(city) = 'hamilton';
+
+
+
