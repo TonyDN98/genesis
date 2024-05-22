@@ -41,9 +41,3 @@
 #### ORACLE RAC(Real App Cluster)
 Server Machine DataBase => x DataBase INSTANCES
 ![RAC](https://dotnettutorials.net/wp-content/uploads/2022/06/word-image-27931-6.png?ezimgfmt=ng:webp/ngcb8)
-
-
-
-
-
-

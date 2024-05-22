@@ -3,7 +3,7 @@
 -- 1. CREATE a TABLE to store the names and weights of toys
 CREATE TABLE toys(
 	name VARCHAR2(10),
-    weight NUMBER
+       weight NUMBER
 );
 
 SELECT table_name, iot_name, iot_type, external, 
@@ -31,7 +31,7 @@ SELECT table_name, iot_name, iot_type, external,
 FROM   all_tables;
 
 DESC dba_tables;
-  
+
 SELECT table_name, iot_name, iot_type, external, 
        partitioned, temporary, cluster_name
 FROM   dba_tables;

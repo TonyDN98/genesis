@@ -22,7 +22,7 @@
 6. Table Clusters
     * Physically store **related data** together
     * Much easier to find stuff.
-
+---
 #### Q1: True about Heap Organization?
 * They are the default table type in Oracle.
 * There is no order on how it's stored data, any new row will be **inserted whenever there will be space in the table**.
@@ -144,7 +144,7 @@ CREATE TABLE partition_range (
   PARTITION p1 values less than ('c')
 );
 
-CREATE TABLEe partition_list (
+CREATE TABLE partition_list (
   partition_name varchar2(100)
 ) PARTITION by list ( partition_name ) (
   PARTITION p0 values ('Sir Stripypants'),
@@ -153,7 +153,7 @@ CREATE TABLEe partition_list (
 
 CREATE TABLE partition_hash (
   partition_name varchar2(100)
-) PARTITION by hash ( partition_name ) partitions 4;
+) PARTITION by hash ( partition_name ) PARTITIONS 4;
 
 
 -- By default a partitioned table is heap-organized. But you can combine partitioning with some other properties. For example, you can have a partitioned IOT:
@@ -161,8 +161,8 @@ CREATE TABLE partition_hash (
 CREATE TABLE toys_part_iot (
   toy_id   integer primary key,
   toy_name varchar2(100)
-) organization index 
-  PARTITION by hash ( toy_id ) partitions 4;
+) ORGANIZATION INDEX 
+  PARTITION by hash ( toy_id ) PARTITIONS 4;
 
 
 ```
@@ -214,23 +214,23 @@ WHERE  table_name = 'private_temp_pvt';
 1. A cluster store a group of tables with same columns. First create the **cluster**
 
 ```sql
-create cluster prime_cluster(
-    column_common number
+CREATE cluster prime_cluster(
+    column_common NUMBER
 );
 ```
 
 2. With the cluster in place, you can assign tables to it as shown. The cluster clause states which cluster to use and which of the table's columns are the cluster key. 
 ```sql
-create table cluster_tab1(
-    column_common number
+CREATE TABLE cluster_tab1(
+    column_common NUMBER
 )cluster prime_cluster (column_common);
 ```
 
 3. This places a second table in the cluster "clus". Oracle Database will store rows from cluster_tab1 with the same value for col1 in the same location. For example, if you have rows with COL1 = 1 in cluster_tab1 and cluster_tab2 these rows are both in the same place.
 
 ```sql
-create table cluster_tab2(
-    column_common number
+CREATE TABLE cluster_tab2(
+    column_common NUMBER
 )cluster prime_cluster  (column_common);
 ```
 
